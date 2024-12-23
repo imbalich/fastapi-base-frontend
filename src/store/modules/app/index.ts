@@ -58,12 +58,14 @@ const useAppStore = defineStore('app', {
 
   getters: {
     appCurrentSetting(state: AppState): AppState {
+      // 获取当前设置
       return { ...state };
     },
     appDevice(state: AppState) {
       return state.device;
     },
     appAsyncMenus(state: AppState): RouteRecordNormalized[] {
+      // 从存储中检索服务器端菜单配置
       return state.serverMenu as unknown as RouteRecordNormalized[];
     },
   },
@@ -100,9 +102,10 @@ const useAppStore = defineStore('app', {
           content: 'loading',
           closable: true,
         });
-
+        // 获取用户菜单
         const data = await getUserMenuList();
-
+        // 如果获取数据为空或没有 dashboard 菜单,则添加 dashboard 菜单
+        // 如果获取数据不为空且有 dashboard 菜单，则不做任何处理
         if (
           data.length === 0 ||
           !data.some((item) => item.name === 'dashboard')
@@ -115,7 +118,7 @@ const useAppStore = defineStore('app', {
             data
           ) as unknown as RouteRecordNormalized[];
         }
-
+        // 显示通知：用户菜单配置加载成功
         notifyInstance = Notification.success({
           id: 'menuNotice',
           content: 'success',

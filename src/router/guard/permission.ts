@@ -19,6 +19,7 @@ export default function setupPermissionGuard(router: Router) {
         !appStore.appAsyncMenus.length &&
         !WHITE_LIST.find((el) => el.name === to.name)
       ) {
+        // 加载菜单
         await appStore.fetchServerMenuConfig();
       }
 
@@ -38,7 +39,7 @@ export default function setupPermissionGuard(router: Router) {
         }
       }
 
-      // 如果存在该路由且权限允许，跳转
+      // 如果存在该路由且权限允许，跳转,否则跳转到404
       if (exist && permissionsAllow) {
         next();
       } else {
