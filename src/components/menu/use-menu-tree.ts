@@ -3,16 +3,19 @@ import { cloneDeep } from 'lodash';
 import { RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
 import usePermission from '@/hooks/permission';
 import { useAppStore } from '@/store';
-import appClientMenus from '@/router/app-menus';
+import { Message } from '@arco-design/web-vue';
+import { useI18n } from 'vue-i18n';
 
 export default function useMenuTree() {
+  const { t } = useI18n();
   const permission = usePermission();
   const appStore = useAppStore();
   const appRoute = computed(() => {
-    if (appStore.menuFromServer) {
-      return appStore.appAsyncMenus;
+    if (appStore.appAsyncMenus.length === 0) {
+      // 加载失败可以在这里触发重新获取菜单数据
+      appStore.fetchServerMenuConfig();
     }
-    return appClientMenus;
+    return appStore.appAsyncMenus;
   });
   const menuTree = computed(() => {
     const copyRouter = cloneDeep(appRoute.value) as RouteRecordNormalized[];

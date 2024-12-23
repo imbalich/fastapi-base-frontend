@@ -12,40 +12,40 @@ export default function setupPermissionGuard(router: Router) {
     const Permission = usePermission();
     const permissionsAllow = Permission.accessRouter(to);
 
+    // 白名单直接放行
+    if (WHITE_LIST.find((el) => el.name === to.name)) {
+      next();
+      NProgress.done();
+      return;
+    }
+
     // 动态菜单加载
-    if (appStore.menuFromServer) {
-      // 如果菜单未加载并且不在白名单中，加载菜单
-      if (
-        !appStore.appAsyncMenus.length &&
-        !WHITE_LIST.find((el) => el.name === to.name)
-      ) {
-        // 加载菜单
-        await appStore.fetchServerMenuConfig();
-      }
+    if (
+      !appStore.appAsyncMenus.length &&
+      !WHITE_LIST.find((el) => el.name === to.name)
+    ) {
+      // 加载菜单
+      await appStore.fetchServerMenuConfig();
+    }
 
-      const serverMenuConfig = [...appStore.appAsyncMenus, ...WHITE_LIST];
-      let exist = false;
+    const serverMenuConfig = [...appStore.appAsyncMenus, ...WHITE_LIST];
+    let exist = false;
 
-      // 遍历菜单，检查路由是否存在
-      while (serverMenuConfig.length && !exist) {
-        const element = serverMenuConfig.shift();
-        if (element?.name === to.name) {
-          exist = true;
-        }
-        if (element?.children) {
-          serverMenuConfig.push(
-            ...(element.children as unknown as RouteRecordNormalized[])
-          );
-        }
+    // 遍历菜单，检查路由是否存在
+    while (serverMenuConfig.length && !exist) {
+      const element = serverMenuConfig.shift();
+      if (element?.name === to.name) {
+        exist = true;
       }
+      if (element?.children) {
+        serverMenuConfig.push(
+          ...(element.children as unknown as RouteRecordNormalized[])
+        );
+      }
+    }
 
-      // 如果存在该路由且权限允许，跳转,否则跳转到404
-      if (exist && permissionsAllow) {
-        next();
-      } else {
-        next(NOT_FOUND);
-      }
-    } else if (permissionsAllow) {
+    // 如果找到了有权限的路由，重定向到该路由，否则去 404
+    if (exist && permissionsAllow) {
       next();
     } else {
       const destination =
