@@ -31,11 +31,8 @@ export default function useMenuTree() {
 
         // leaf node
         if (element.meta?.hideInMenu || !element.children) {
-          element.children = [];
-          if (appStore.menuFromServer) {
-            return null;
-          }
-          return element;
+          // 元素存在meta.hideInMenu属性且值为true，或者元素不存在children属性，那么它就是一个叶子节点。
+          return null;
         }
 
         // route filter hideInMenu true

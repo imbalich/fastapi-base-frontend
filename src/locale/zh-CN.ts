@@ -16,7 +16,6 @@ import localeSettings from './zh-CN/settings';
 export default {
   'menu.dashboard': '仪表盘',
   'menu.admin': '系统管理',
-  'menu.automation': '系统自动化',
   'menu.monitor': '系统监控',
   'menu.log': '日志',
   'menu.arcoWebsite': 'Arco Design',
