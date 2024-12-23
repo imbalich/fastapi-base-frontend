@@ -3,11 +3,8 @@ import { cloneDeep } from 'lodash';
 import { RouteRecordNormalized, RouteRecordRaw } from 'vue-router';
 import usePermission from '@/hooks/permission';
 import { useAppStore } from '@/store';
-import { Message } from '@arco-design/web-vue';
-import { useI18n } from 'vue-i18n';
 
 export default function useMenuTree() {
-  const { t } = useI18n();
   const permission = usePermission();
   const appStore = useAppStore();
   const appRoute = computed(() => {
