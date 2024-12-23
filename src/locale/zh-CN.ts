@@ -10,7 +10,6 @@ import localeServerMonitor from '@/views/monitor/server/locale/zh-CN';
 import localeRedisMonitor from '@/views/monitor/redis/locale/zh-CN';
 import localeSysUser from '@/views/admin/user/locale/zh-CN';
 import localeSysRole from '@/views/admin/role/locale/zh-CN';
-import localeGenerator from '@/views/automation/code-generator/local/zh-CN';
 import localeDataRule from '@/views/admin/data-rule/local/zh-CN';
 import localeSettings from './zh-CN/settings';
 
@@ -47,6 +46,5 @@ export default {
   ...localeRedisMonitor,
   ...localeSysUser,
   ...localeSysRole,
-  ...localeGenerator,
   ...localeDataRule,
 };
