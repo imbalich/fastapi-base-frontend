@@ -1,0 +1,27 @@
+export default {
+  'menu.datamanage.despatch': '发运数据管理',
+  // columns
+  'datamanage.despatch.columns.model': '产品型号',
+  'datamanage.despatch.columns.identifier': '物料编码',
+  'datamanage.despatch.columns.repair_level': '修理级别',
+  'datamanage.despatch.columns.life_cycle_time': '出厂日期',
+  'datamanage.despatch.columns.repair_level_num': '修级序号',
+  'datamanage.despatch.columns.attach_company': '配属路局',
+  'datamanage.despatch.columns.attach_dept': '配属路段',
+  'datamanage.despatch.columns.cust_name': '客户名称',
+  'datamanage.despatch.columns.dopt_name': '库房名称',
+  'datamanage.despatch.columns.factory_name': '工厂名称',
+  'datamanage.despatch.columns.date_source': '数据来源',
+  'datamanage.despatch.columns.sync_time': '生成时间',
+  // form
+  'datamanage.despatch.form.model': '产品型号',
+  'datamanage.despatch.form.model.placeholder': '请输入产品型号',
+  'datamanage.despatch.form.identifier': '物料编码',
+  'datamanage.despatch.form.identifier.placeholder': '请输入物料编码',
+  'datamanage.despatch.form.repair_level': '修理级别',
+  'datamanage.despatch.form.repair_level.placeholder': '请输入修理级别',
+  'datamanage.despatch.form.life_cycle_time': '出厂日期',
+  'datamanage.despatch.form.life_cycle_time.placeholder': '请输入出厂日期',
+  'datamanage.despatch.form.search': '搜索',
+  'datamanage.despatch.form.reset': '重置',
+};

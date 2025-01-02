@@ -11,7 +11,9 @@ import localeRedisMonitor from '@/views/monitor/redis/locale/zh-CN';
 import localeSysUser from '@/views/admin/user/locale/zh-CN';
 import localeSysRole from '@/views/admin/role/locale/zh-CN';
 import localeDataRule from '@/views/admin/data-rule/local/zh-CN';
+import localeDespatch from '@/views/datamanage/despatch/locale/zh-CN';
 import localeSettings from './zh-CN/settings';
+
 
 export default {
   'menu.dashboard': '仪表盘',
@@ -22,6 +24,7 @@ export default {
   'menu.site': '官网',
   'menu.github': 'GitHub',
   'menu.sponsor': '赞助',
+  'menu.datamanage': '数据管理', // 自定义部分
   'navbar.action.locale': '切换为中文',
   'modal.title.tips': '温馨提示',
   'modal.title.tips.delete': '确定要删除吗？',
@@ -46,4 +49,5 @@ export default {
   ...localeSysUser,
   ...localeSysRole,
   ...localeDataRule,
+  ...localeDespatch,
 };
