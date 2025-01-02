@@ -5,6 +5,7 @@ export default {
   'log.login.form.username.placeholder': '请输入用户名',
   'log.login.form.ip': 'IP',
   'log.login.form.ip.placeholder': '请输入IP',
+  'log.login.form.range': '时间范围',
   'log.login.form.status': '状态',
   'log.login.form.status.1': '成功',
   'log.login.form.status.0': '失败',
