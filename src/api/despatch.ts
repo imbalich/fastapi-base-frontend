@@ -5,7 +5,7 @@ export interface DmDespatchParams {
   model?: string;
   identifier?: string;
   repair_level?: string;
-  life_cycle_time?: string[];
+  time_range?: string[];
   page?: number;
   size?: number;
 }
@@ -44,4 +44,8 @@ export function queryDmDespatchList(
 
 export function queryDmDespatchModelList(): Promise<string[]> {
   return axios.get('/api/v1/datamanage/despatch/models');
+}
+
+export function queryRepairLevelList(): Promise<string[]> {
+  return axios.get('/api/v1/datamanage/despatch/repair-levels');
 }

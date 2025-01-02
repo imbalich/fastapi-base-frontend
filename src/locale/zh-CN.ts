@@ -14,7 +14,6 @@ import localeDataRule from '@/views/admin/data-rule/local/zh-CN';
 import localeDespatch from '@/views/datamanage/despatch/locale/zh-CN';
 import localeSettings from './zh-CN/settings';
 
-
 export default {
   'menu.dashboard': '仪表盘',
   'menu.admin': '系统管理',

@@ -206,15 +206,19 @@
   };
   fetchData();
 
-  // 事件: 分页
+  // 事件: 分页 合并分页参数和搜索条件
   const onPageChange = async (current: number) => {
-    await fetchData({ page: current, size: pagination.pageSize });
+    await fetchData({
+      ...formModel.value,
+      page: current,
+      size: pagination.pageSize,
+    });
   };
 
-  // 事件: 分页大小
+  // 事件: 分页大小 合并分页参数和搜索条件
   const onPageSizeChange = async (pageSize: number) => {
     pagination.pageSize = pageSize;
-    await fetchData({ page: 1, size: pageSize });
+    await fetchData({ ...formModel.value, page: 1, size: pageSize });
   };
 
   // 事件: 搜索
